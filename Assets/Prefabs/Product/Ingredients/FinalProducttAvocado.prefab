@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _countColor: {r: 1, g: 0, b: 0, a: 0}
+  _ingredientSO: {fileID: 0}
 --- !u!114 &3356475332509062867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 5777500004465537769}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.071071625, y: -1.0399998, z: -3.9417458}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.47333333, y: 0.47333333, z: 0.47333333}
   m_ConstrainProportionsScale: 0
   m_Children: []

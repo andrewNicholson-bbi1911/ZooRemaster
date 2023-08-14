@@ -7,9 +7,11 @@ using RSG;
 [RequireComponent(typeof(Outline))]
 public class Ingredient : MonoBehaviour
 {
+    [SerializeField] private IngredientSO _ingredientSO;
     [SerializeField] private int _id;
     [SerializeField] private Color _countColor;
-    [SerializeField] private IngredientSO _ingredientSO;
+    [SerializeField] private int _price;
+    [SerializeField] private string _name;
 
     private MeshFilter _ingredientModel;
     private MeshRenderer _ingredientMaterial;
@@ -30,6 +32,10 @@ public class Ingredient : MonoBehaviour
     public int ID => _id;
     public Color CountColor => _countColor;
     public Vector3 TargetPosition { get; private set; }
+    public MeshFilter IngredientModel { get => _ingredientModel; }
+    public MeshRenderer IngredientMaterial { get => _ingredientMaterial; }
+    public int Price { get => _price; }
+    public string Name { get => _name; }
 
     private void Awake()
     {
@@ -42,6 +48,9 @@ public class Ingredient : MonoBehaviour
 
         _ingredientMaterial = GetComponentInChildren<MeshRenderer>();
         _ingredientMaterial = _ingredientSO.IngredientMaterial;
+
+        _price = _ingredientSO.Price;
+        _name = _ingredientSO.Name;
     }
 
     private void Start()
