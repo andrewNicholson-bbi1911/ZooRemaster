@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewAnimalSet", menuName = "Custom/AnimalSet", order = 51)]
 public class AnimalSet : ScriptableObject
 {
-    [SerializeField] private List<Animal> _animals;
+    [SerializeField] private List<Ingredient> _animals;
 
     public int Size => _animals.Count;
 
@@ -17,7 +17,7 @@ public class AnimalSet : ScriptableObject
         }
     }
 
-    public Animal GetAnimalTemplate(int index)
+    public Ingredient GetAnimalTemplate(int index)
     {
         return _animals[index];
     }

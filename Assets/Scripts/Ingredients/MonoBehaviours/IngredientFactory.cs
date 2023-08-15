@@ -9,7 +9,7 @@ using RSG;
 public class IngredientFactory : MonoBehaviour
 {
     [SerializeField] private Door _door;
-    [SerializeField] private float _movePerIngredient = 0.1f;
+    [SerializeField] private float _movePerAnimal = 0.1f;
     [SerializeField] private ComboText _comboText;
     [SerializeField] private Image _comboImage;
     [SerializeField] private ParticleSystem _confetti;
@@ -29,9 +29,9 @@ public class IngredientFactory : MonoBehaviour
     public List<Ingredient> Ingredients => _ingredients;
     public List<IngredientSO> Products => _products;
 
-    public event UnityAction<Aviary> GotIngredient; // replacing class
-    public event UnityAction<List<Animal>> ReleasedIngredient; // check replacing logic
-    public event UnityAction<Aviary> Interacted;  // check replacing logic
+    public event UnityAction<Factory> GotIngredient; // replacing class
+    public event UnityAction<List<Ingredient>> ReleasedIngredient; // check replacing logic
+    public event UnityAction<Factory> Interacted;  // check replacing logic
 
     // Does these events need for Ingredeint logic?
     public event UnityAction NiceMove;

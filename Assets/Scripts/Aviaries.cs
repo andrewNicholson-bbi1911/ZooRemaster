@@ -6,30 +6,30 @@ using UnityEngine.Events;
 public class Aviaries : MonoBehaviour
 {
     [SerializeField] private ComboContainer _comboContainer;
-    [SerializeField] private Aviary[] _aviaries;
+    [SerializeField] private Factory[] _factories;
 
-    public event UnityAction<List<Animal>> ReleasedAnimals;
+    public event UnityAction<List<Ingredient>> ReleasedAnimals;
     public event UnityAction Interacted;
     public event UnityAction GoodAction;
     public event UnityAction BadAction;
 
     private void OnEnable()
     {
-        foreach (var item in _aviaries)
+        foreach (var factory in _factories)
         {
-            item.ReleasedAnimals += OnReleasedAnimals;
-            item.Interacted += OnAviaryInteracted;
-            item.BadMove += OnBadAction;
-            item.NiceMove += OnGoodAction;
-            item.VeryNiceMove += OnGoodAction;
+            factory.ReleasedIngredient += OnReleasedAnimals;
+            factory.Interacted += OnAviaryInteracted;
+            factory.BadMove += OnBadAction;
+            factory.NiceMove += OnGoodAction;
+            factory.VeryNiceMove += OnGoodAction;
         }
     }
 
     private void OnDisable()
     {
-        foreach (var item in _aviaries)
+        foreach (var item in _factories)
         {
-            item.ReleasedAnimals -= OnReleasedAnimals;
+            item.ReleasedIngredient -= OnReleasedAnimals;
             item.Interacted -= OnAviaryInteracted;
             item.BadMove -= BadAction;
             item.NiceMove -= GoodAction;
@@ -39,16 +39,16 @@ public class Aviaries : MonoBehaviour
 
     private void Start()
     {
-        foreach (var item in _aviaries)
+        foreach (var item in _factories)
             item.Init(_comboContainer);
     }
 
-    private void OnReleasedAnimals(List<Animal> animals)
+    private void OnReleasedAnimals(List<Ingredient> animals)
     {
         ReleasedAnimals?.Invoke(animals);
     }
 
-    private void OnAviaryInteracted(Aviary aviary)
+    private void OnAviaryInteracted(Factory factory)
     {
         Interacted?.Invoke();
     }

@@ -5,7 +5,7 @@ using RSG;
 
 //[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Outline))]
-public class Ingredient : MonoBehaviour
+public class Ingr : MonoBehaviour
 {
     [SerializeField] private IngredientSO _ingredientSO;
     [SerializeField] private int _id;
@@ -187,7 +187,7 @@ public class Ingredient : MonoBehaviour
         return promise;
     }
 
-    public IPromise MoveToAviary(Aviary aviary, float duration, Vector3 targetPosition)
+    public IPromise MoveToAviary(Factory aviary, float duration, Vector3 targetPosition)
     {
         _aviaryDoorPosition = aviary.DoorPosition;
         SmoothPath path = new SmoothPath(transform.position, targetPosition, new Vector3[] { aviary.DoorPosition + aviary.transform.forward * 5 }, transform.forward, transform.forward, 3f);

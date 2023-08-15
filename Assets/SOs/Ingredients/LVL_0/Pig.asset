@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d969ef77044916b4daaa2a058dfbfbdf, type: 3}
-  m_Name: DefaultIngredients
+  m_Name: Pig
   m_EditorClassIdentifier: 
-  _ingredientModel: {fileID: -5754084199372789682, guid: fd7405edb270b3c4b86ba4b30f8d8734,
-    type: 3}
+  _ingredientModel: {fileID: 0}
+  _ingredientMaterial: {fileID: 0}
   _price: 10
-  _name: Avocado
+  _name: Pig

@@ -6,11 +6,15 @@ using RSG;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Outline))]
-public class Animal : MonoBehaviour
+public class Ingredient : MonoBehaviour
 {
+    [SerializeField] private IngredientSO _ingredientSO;
     [SerializeField] private int _id;
     [SerializeField] private Color _countColor;
+    
 
+    private MeshFilter _ingredientModel;
+    private MeshRenderer _ingredientMaterial;
     private Animator _animator;
     private Outline _outline;
     private Damping _damp = new Damping(0.5f, 2, 0, 1);
@@ -28,12 +32,23 @@ public class Animal : MonoBehaviour
     public int ID => _id;
     public Color CountColor => _countColor;
     public Vector3 TargetPosition { get; private set; }
+    public MeshFilter IngredientModel { get => _ingredientModel; }
+    public MeshRenderer IngredientMaterial { get => _ingredientMaterial; }
+    public int Price { get => _ingredientSO.Price; }
+    public string Name { get => _ingredientSO.Name; }
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _outline = GetComponent<Outline>();
         _baseScale = transform.localScale;
+
+        _ingredientModel = GetComponentInChildren<MeshFilter>();
+        _ingredientModel = _ingredientSO.IngredientModel;
+
+        _ingredientMaterial = GetComponentInChildren<MeshRenderer>();
+        _ingredientMaterial = _ingredientSO.IngredientMaterial;
+
     }
 
     private void Start()
@@ -170,7 +185,7 @@ public class Animal : MonoBehaviour
         return promise;
     }
 
-    public IPromise MoveToAviary(Aviary aviary, float duration, Vector3 targetPosition)
+    public IPromise MoveToAviary(Factory aviary, float duration, Vector3 targetPosition)
     {
         _aviaryDoorPosition = aviary.DoorPosition;
         SmoothPath path = new SmoothPath(transform.position, targetPosition, new Vector3[] { aviary.DoorPosition + aviary.transform.forward * 5 }, transform.forward, transform.forward, 3f);

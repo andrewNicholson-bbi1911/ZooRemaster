@@ -15,7 +15,7 @@ public class Game : MonoBehaviour
     [SerializeField] private ComboText _combo;
     [SerializeField] private PopupText _plusText;
     [SerializeField] private ComboText _score;
-    [SerializeField] private Aviary[] _aviaries;
+    [SerializeField] private Factory[] _aviaries;
     [SerializeField] private PopupText _plusTextPrefab;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private HandPointer _pointer;
@@ -26,7 +26,7 @@ public class Game : MonoBehaviour
     [SerializeField] private Leaderboard _totalScoreLeaderboard;
     [SerializeField] private LeanToken _levelToken;
 
-    private Aviary _lastAviary;
+    private Factory _lastAviary;
     private int _level;
     private const int _levelsPerScene = 4;
     private bool _levelComplete;
@@ -67,7 +67,7 @@ public class Game : MonoBehaviour
         _combo.WillDisappear += DoneCombo;
         foreach (var item in _aviaries)
         {
-            item.GotAnimal += OnGotAnimal;
+            item.GotIngredient += OnGotAnimal;
         }
     }
 
@@ -79,7 +79,7 @@ public class Game : MonoBehaviour
         _combo.WillDisappear -= DoneCombo;
         foreach (var item in _aviaries)
         {
-            item.GotAnimal -= OnGotAnimal;
+            item.GotIngredient -= OnGotAnimal;
         }
     }
 
@@ -136,7 +136,7 @@ public class Game : MonoBehaviour
             item.Hide();
     }
 
-    private void OnGotAnimal(Aviary aviary)
+    private void OnGotAnimal(Factory aviary)
     {
         _lastAviary = aviary;
 
