@@ -10,13 +10,13 @@ public class Node : MonoBehaviour
     private int _index;
     private bool _onEdge = false;
     private Node[] _connectedNodes;
-    private Animal _animal;
+    private Ingredient _ingredient;
     private IPromiseTimer _timer = new PromiseTimer();
 
     public int Index => _index;
-    public bool IsBusy => _animal != null;
+    public bool IsBusy => _ingredient != null;
     public bool OnEdge => _onEdge;
-    public Animal Animal => _animal;
+    public Ingredient Animal => _ingredient;
     public Node[] Connected => _connectedNodes;
     public int Row { get; private set; } = 0;
 
@@ -32,30 +32,30 @@ public class Node : MonoBehaviour
         _connectedNodes = nodes;
     }
 
-    public void MakeBusy(Animal animal)
+    public void MakeBusy(Ingredient animal)
     {
-        _animal = animal;
+        _ingredient = animal;
     }
 
-    public void MakeBusy(Animal animal, float delay, bool fromAviary)
+    public void MakeBusy(Ingredient animal, float delay, bool fromAviary)
     {
-        _animal = animal;
+        _ingredient = animal;
         if (fromAviary)
         {
-            _animal.MoveFromAviary(transform.position);
+            _ingredient.MoveFromAviary(transform.position);
         }
         else
         {
             _timer.WaitFor(delay).Then(() =>
             {
-                _animal.Go(transform.position, 0.5f);
+                _ingredient.Go(transform.position, 0.5f);
             });
         }
     }
 
     public void Clear()
     {
-        _animal = null;
+        _ingredient = null;
     }
 
     public bool TryGetPreferedNode(out Node prefered)
@@ -92,12 +92,12 @@ public class Node : MonoBehaviour
 
     public void Select()
     {
-        _animal?.Select();
+        _ingredient?.Select();
     }
 
     public void Deselect()
     {
-        _animal?.Unselect();
+        _ingredient?.Unselect();
     }
 
     private void Update()

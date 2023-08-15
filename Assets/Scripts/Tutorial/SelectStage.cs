@@ -36,7 +36,7 @@ public class SelectStage : TutorialStage
 
     private void Init()
     {
-        var animals = FindObjectsOfType<Animal>();
+        var animals = FindObjectsOfType<Ingredient>();
         var nearest = animals[0];
         foreach (var animal in animals)
         {

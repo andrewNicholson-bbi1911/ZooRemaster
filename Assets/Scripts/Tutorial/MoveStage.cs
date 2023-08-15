@@ -36,7 +36,7 @@ public class MoveStage : TutorialStage
 
     private void Init()
     {
-        var aviaries = FindObjectsOfType<Aviary>();
+        var aviaries = FindObjectsOfType<Factory>();
         var nearest = aviaries[0];
         foreach (var aviary in aviaries)
         {

@@ -112,7 +112,7 @@ public class Net : MonoBehaviour
 
                 GoodClick?.Invoke();
             }
-            else if (hit.transform.TryGetComponent(out Aviary aviary))
+            else if (hit.transform.TryGetComponent(out Factory aviary))
             {
                 if (_selectedNodes.Count > 0)
                 {
@@ -151,7 +151,7 @@ public class Net : MonoBehaviour
                 item.Animal.PlayAnimation(animation, 0.05f * item.Row);
     }
 
-    private void TakeAnimalsBack(List<Animal> animals)
+    private void TakeAnimalsBack(List<Ingredient> animals)
     {
         CalcMove(true, 0.2f);
         for (int i = 0; i < animals.Count; i++)
@@ -284,7 +284,7 @@ public class Net : MonoBehaviour
             {
                 if (node.TryGetFarNode(out Node prefered))
                 {
-                    Animal animal = node.Animal;
+                    Ingredient animal = node.Animal;
                     node.Clear();
                     prefered.MakeBusy(animal, delay, false);
                     return true;
@@ -294,7 +294,7 @@ public class Net : MonoBehaviour
             {
                 if (node.TryGetPreferedNode(out Node prefered))
                 {
-                    Animal animal = node.Animal;
+                    Ingredient animal = node.Animal;
                     node.Clear();
                     prefered.MakeBusy(animal, delay, false);
                     return true;

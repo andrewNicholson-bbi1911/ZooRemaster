@@ -14,7 +14,7 @@ public class AnimalSpawner : MonoBehaviour
     [SerializeField] [Range(0,1)] private float _AnimalRatio;
 
     private AnimalSet _set;
-    private List<Animal> _animals = new List<Animal>();
+    private List<Ingredient> _animals = new List<Ingredient>();
     private int[] _spawned;
 
     private void OnEnable()
@@ -27,10 +27,10 @@ public class AnimalSpawner : MonoBehaviour
         _game.LevelStarted -= ChangeAnimalSet;
     }
 
-    public Animal Spawn(Vector3 position)
+    public Ingredient Spawn(Vector3 position)
     {
         var index = NewAnimalIndex();
-        Animal animal = Instantiate(_set.GetAnimalTemplate(index), position, Quaternion.LookRotation(Vector3.back, Vector3.up));
+        Ingredient animal = Instantiate(_set.GetAnimalTemplate(index), position, Quaternion.LookRotation(Vector3.back, Vector3.up));
         _animals.Add(animal);
         _spawned[index]++;
         return animal;
