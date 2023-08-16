@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.AI;
 using RSG;
 
@@ -37,6 +38,9 @@ public class Ingredient : MonoBehaviour
     public int Price { get => _ingredientSO.Price; }
     public string Name { get => _ingredientSO.Name; }
 
+    public UnityEvent OnMovedToFactory = new UnityEvent();
+    public UnityEvent OnRemovedFromFactory = new UnityEvent();
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -44,10 +48,8 @@ public class Ingredient : MonoBehaviour
         _baseScale = transform.localScale;
 
         _ingredientModel = GetComponentInChildren<MeshFilter>();
-        _ingredientModel = _ingredientSO.IngredientModel;
 
         _ingredientMaterial = GetComponentInChildren<MeshRenderer>();
-        _ingredientMaterial = _ingredientSO.IngredientMaterial;
 
     }
 
@@ -181,6 +183,7 @@ public class Ingredient : MonoBehaviour
             _animator.SetBool("isMoving", false);
             RotateBack(0.2f);
             promise.Resolve();
+            OnRemovedFromFactory.Invoke();
         });
         return promise;
     }
@@ -197,6 +200,7 @@ public class Ingredient : MonoBehaviour
             _animator.SetBool("isMoving", false);
             RotateBack(0.2f);
             promise.Resolve();
+            OnMovedToFactory.Invoke();
         });
         return promise;
     }

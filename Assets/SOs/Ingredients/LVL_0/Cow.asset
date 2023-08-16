@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingredientModel: {fileID: 0}
   _ingredientMaterial: {fileID: 0}
+  _ingredientRefference: {fileID: 3234020798258041512, guid: f84ebc8c0a4464f98a202f2c0a1340dc,
+    type: 3}
   _price: 10
   _name: Cow

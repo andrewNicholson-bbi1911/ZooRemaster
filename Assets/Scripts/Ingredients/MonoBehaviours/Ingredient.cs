@@ -13,8 +13,6 @@ public class Ingr : MonoBehaviour
     [SerializeField] private int _price;
     [SerializeField] private string _name;
 
-    private MeshFilter _ingredientModel;
-    private MeshRenderer _ingredientMaterial;
     private Animator _animator;
     private Outline _outline;
     private Damping _damp = new Damping(0.5f, 2, 0, 1);
@@ -32,8 +30,6 @@ public class Ingr : MonoBehaviour
     public int ID => _id;
     public Color CountColor => _countColor;
     public Vector3 TargetPosition { get; private set; }
-    public MeshFilter IngredientModel { get => _ingredientModel; }
-    public MeshRenderer IngredientMaterial { get => _ingredientMaterial; }
     public int Price { get => _price; }
     public string Name { get => _name; }
 
@@ -43,11 +39,6 @@ public class Ingr : MonoBehaviour
         _outline = GetComponent<Outline>();
         _baseScale = transform.localScale;
 
-        _ingredientModel = GetComponentInChildren<MeshFilter>();
-        _ingredientModel = _ingredientSO.IngredientModel;
-
-        _ingredientMaterial = GetComponentInChildren<MeshRenderer>();
-        _ingredientMaterial = _ingredientSO.IngredientMaterial;
 
         _price = _ingredientSO.Price;
         _name = _ingredientSO.Name;

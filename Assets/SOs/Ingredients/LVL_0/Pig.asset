@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingredientModel: {fileID: 0}
   _ingredientMaterial: {fileID: 0}
+  _ingredientRefference: {fileID: 1717331777994770972, guid: 2e34ac8aa32d845e59fe45de5764f2ce,
+    type: 3}
   _price: 10
   _name: Pig
