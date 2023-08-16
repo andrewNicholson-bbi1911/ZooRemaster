@@ -9,7 +9,7 @@ public class Net : MonoBehaviour
 {
     [SerializeField] private Node _prefab;
     [SerializeField] private float _distance = 3;
-    [SerializeField] private AnimalSpawner _spawner;
+    [SerializeField] private IngredientSpawner _spawner;
     [SerializeField] private HandPointer _pointer;
     [SerializeField] private Aviaries _aviaries;
     [SerializeField] private InGameInput _input;
@@ -37,6 +37,13 @@ public class Net : MonoBehaviour
 
         _nodes = _nodes.OrderBy(node => node.Index).ToList();
     }
+
+
+    public Node GetFreeNode()
+    {
+        return GetNextFreeNode();
+    }
+
 
     private void Update()
     {

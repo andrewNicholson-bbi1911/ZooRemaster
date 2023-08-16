@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class SpawnAnimals
@@ -8,13 +9,15 @@ public class SpawnAnimals
 
 }
 
-public class AnimalSpawner : MonoBehaviour
+public class IngredientSpawner : MonoBehaviour
 {
     [SerializeField] private Game _game;
     [SerializeField] [Range(0,1)] private float _AnimalRatio;
-
+    [SerializeField] private Net _net;
+    [Space]
+    [SerializeField] private IngredientSO _testIngredient;
     private AnimalSet _set;
-    private List<Ingredient> _animals = new List<Ingredient>();
+    private List<Ingredient> _ingredients = new List<Ingredient>();
     private int[] _spawned;
 
     private void OnEnable()
@@ -27,11 +30,38 @@ public class AnimalSpawner : MonoBehaviour
         _game.LevelStarted -= ChangeAnimalSet;
     }
 
+    public void TestSpawn()
+    {
+        SpawnIngredient(_testIngredient);
+    }
+
+    public Ingredient SpawnIngredient(IngredientSO ingredientSO)
+    {
+        var index = NewAnimalIndex();
+        var newNod = _net.GetFreeNode();
+        if(newNod == null)
+        {
+            return null;
+        }
+        Vector3 position = newNod.transform.position;
+        var animalObj = Instantiate(ingredientSO.IngredientRefference, position, Quaternion.LookRotation(Vector3.back, Vector3.up));
+        var animal = animalObj.GetComponent<Ingredient>();
+        _ingredients.Add(animal);
+        animal.OnMovedToFactory.AddListener(() => OnIngredientLeft(index));
+        animal.OnRemovedFromFactory.AddListener(() => OnIngredientReturned(index));
+        _spawned[index]++;
+        newNod.MakeBusy(animal);
+        return animal;
+    }
+
+
     public Ingredient Spawn(Vector3 position)
     {
         var index = NewAnimalIndex();
         Ingredient animal = Instantiate(_set.GetAnimalTemplate(index), position, Quaternion.LookRotation(Vector3.back, Vector3.up));
-        _animals.Add(animal);
+        _ingredients.Add(animal);
+        animal.OnMovedToFactory.AddListener(() => OnIngredientLeft(index));
+        animal.OnRemovedFromFactory.AddListener(() => OnIngredientReturned(index));
         _spawned[index]++;
         return animal;
     }
@@ -64,6 +94,16 @@ public class AnimalSpawner : MonoBehaviour
             }
         }
         return minRatioIndex;
+    }
+
+    private void OnIngredientReturned(int index)
+    {
+        _spawned[index]++;
+    }
+
+    private void OnIngredientLeft(int index)
+    {
+        _spawned[index]--;
     }
 
     //private void Update()

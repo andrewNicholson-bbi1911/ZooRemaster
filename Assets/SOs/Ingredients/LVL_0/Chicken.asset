@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingredientModel: {fileID: 0}
   _ingredientMaterial: {fileID: 0}
+  _ingredientRefference: {fileID: 1279239448718054115, guid: 01cb5261ed7ab5d49a8dc2bd0fd70bec,
+    type: 3}
   _price: 10
   _name: Chicken
