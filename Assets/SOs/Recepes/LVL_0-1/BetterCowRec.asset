@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaf19a718824334f91cc9585bd2f384, type: 3}
+  m_Name: BetterCowRec
+  m_EditorClassIdentifier: 
+  _ingredients:
+  - {fileID: 11400000, guid: 6caec69c413ef464d97d1fd3ca0853bc, type: 2}
+  - {fileID: 11400000, guid: 6caec69c413ef464d97d1fd3ca0853bc, type: 2}
+  - {fileID: 11400000, guid: 6caec69c413ef464d97d1fd3ca0853bc, type: 2}
+  _finalProduct: {fileID: 11400000, guid: d6aea93453f264593b4d85cd736c9ecc, type: 2}
