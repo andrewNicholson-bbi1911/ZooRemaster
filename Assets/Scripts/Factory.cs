@@ -20,7 +20,8 @@ public class Factory : MonoBehaviour
     [SerializeField] private List<IngredientSO> _producedProducts = new List<IngredientSO>();
 
 
-    private List<Ingredient> _ingredientsContained = new List<Ingredient>();
+    protected List<Ingredient> _ingredientsContained = new List<Ingredient>();
+
     public List<IngredientSO> _usingIngredients = new List<IngredientSO>();
     private IPromiseTimer _promiseTimer = new PromiseTimer();
     private ComboContainer _comboContainer;
@@ -39,6 +40,10 @@ public class Factory : MonoBehaviour
     public event UnityAction<Factory> Interacted;  // check replacing logic
 
     // Does these events need for Ingredeint logic?
+    protected void DoOnVeryNiceMove() => VeryNiceMove?.Invoke();
+    protected void DoOnNiceMove() => NiceMove?.Invoke();
+    protected void DoInterracted(Factory factory) => Interacted?.Invoke(factory);
+
     public event UnityAction NiceMove;
     public event UnityAction VeryNiceMove;
     public event UnityAction BadMove;
@@ -151,7 +156,7 @@ public class Factory : MonoBehaviour
         */
     }
 
-    public bool TryTakeGroup(List<Node> nodes)
+    public virtual bool TryTakeGroup(List<Node> nodes)
     {
         List<Node> sortedNodes = nodes.OrderBy(item => Vector3.Distance(item.transform.position, transform.position)).ToList();
         List<Ingredient> newIngredients = new List<Ingredient>();
@@ -180,36 +185,10 @@ public class Factory : MonoBehaviour
         StartCoroutine(AddAnimalsLoop(newIngredients, canUse && inOtherFactory == false));
 
         return canUse;
-        /*
-        List<Node> sortedNodes = nodes.OrderBy(item => Vector3.Distance(item.transform.position, transform.position)).ToList();
-        List<Ingredient> newIngredients = new List<Ingredient>();
-        for (int i = 0; i < sortedNodes.Count; i++)
-        {
-            Node node = sortedNodes[i];
-            if (node.IsBusy)
-                newIngredients.Add(node.Animal);
-
-            node.Deselect();
-            node.Clear();
-        }
-        OpenDoor();
-
-        bool inOtherAviary = false;
-        Factory[] factories = FindObjectsOfType<Factory>();
-        foreach (var item in factories)
-            if (item != this && item.HasIngredients && item.AnimalID == newIngredients[0].ID)
-                inOtherAviary = true;
-        
-        bool sameAnimals = _ingredients.Count == 0 || newIngredients[0].ID == _ingredients.Peek().ID;
-        StartCoroutine(AddAnimalsLoop(newIngredients, sameAnimals && inOtherAviary == false));
-
-        return sameAnimals;
-        */
-        return true;
     }
 
 
-    private IEnumerator AddAnimalsLoop(List<Ingredient> newIngredients, bool sameAnimals)
+    protected virtual IEnumerator AddAnimalsLoop(List<Ingredient> newIngredients, bool sameAnimals)
     {
         MoveAnimals(newIngredients.Count * _movePerAnimal);
         float maxDelta = _movePerAnimal * (newIngredients.Count - 1);
@@ -236,7 +215,7 @@ public class Factory : MonoBehaviour
         });
     }
 
-    private void MoveAnimals(float delta)
+    protected void MoveAnimals(float delta)
     {
         foreach (var item in _ingredientsContained)
         {
@@ -256,7 +235,7 @@ public class Factory : MonoBehaviour
             GotIngredient?.Invoke(this);
     }
 
-    private void ReactOnNewIngredients(List<Ingredient> newAnimals)
+    protected virtual void ReactOnNewIngredients(List<Ingredient> newAnimals)
     {
         
         int newAnimalsID = newAnimals[0].ID;
@@ -357,7 +336,7 @@ public class Factory : MonoBehaviour
     }
 
 
-    private void UseIngredinents(List<Ingredient> ingredients)
+    protected void UseIngredinents(List<Ingredient> ingredients)
     {
         foreach(var ingredient in ingredients)
         {
@@ -365,7 +344,7 @@ public class Factory : MonoBehaviour
         }
 
         int lastIndex = ingredients.Count - 1;
-        for(int i = lastIndex; i >= 0; i++)
+        for(int i = lastIndex; i >= 0; i--)
         {
             Destroy(ingredients[i].gameObject);
         }

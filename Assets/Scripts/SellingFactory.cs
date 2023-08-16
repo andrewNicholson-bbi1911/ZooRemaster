@@ -1,18 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
-public class SellingFactory : MonoBehaviour
+using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using RSG;
+public class SellingFactory : Factory
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private int _moneyCollected = 0;
+
+    public override bool TryProcessProduct(RecipeSO recipe)
     {
-        
+        foreach(var ingredient in _ingredientsContained)
+        {
+            Sell(ingredient);
+        }
+        UseIngredinents(new List<Ingredient>(_ingredientsContained));
+        return true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override bool TryTakeGroup(List<Node> nodes)
     {
-        
+        List<Node> sortedNodes = nodes.OrderBy(item => Vector3.Distance(item.transform.position, transform.position)).ToList();
+        List<Ingredient> newIngredients = new List<Ingredient>();
+        for (int i = 0; i < sortedNodes.Count; i++)
+        {
+            Node node = sortedNodes[i];
+            if (node.IsBusy)
+                newIngredients.Add(node.Animal);
+
+            node.Deselect();
+            node.Clear();
+        }
+        OpenDoor();
+
+        //bool sameAnimals = _ingredients.Count == 0 || newIngredients[0].ID == _ingredients[_ingredients.Count - 1].ID;
+        StartCoroutine(AddAnimalsLoop(newIngredients, true));
+
+        return true;
+    }
+
+
+    protected override void ReactOnNewIngredients(List<Ingredient> newAnimals)
+    {
+        if (newAnimals.Count > 4)
+        {
+            DoOnVeryNiceMove();
+        }
+        else if (newAnimals.Count >= 1)
+        {
+            DoOnNiceMove();
+        }
+
+        TryProcessProduct(null);
+
+        DoInterracted(this);
+
+    }
+
+    private void Sell(Ingredient ingredient)
+    {
+        var amount = ingredient.Price;
+
+        _moneyCollected += amount;
     }
 }
