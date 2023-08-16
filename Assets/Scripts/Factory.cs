@@ -91,7 +91,7 @@ public class Factory : MonoBehaviour
         _comboContainer = container;
     }
 
-    public bool TryProcessProduct(RecipeSO recipe)
+    public virtual bool TryProcessProduct(RecipeSO recipe)
     {
         if (_recipes.Contains(recipe))
         {
