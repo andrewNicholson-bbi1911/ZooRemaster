@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657886, g: 0.49641556, b: 0.5748193, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641496, b: 0.57481825, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2715,6 +2715,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngradientViewer
       objectReference: {fileID: 0}
+    - target: {fileID: 4467719033995563027, guid: 4e5e3da21555e4b4dbefbfeee0c76589,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5999756
+      objectReference: {fileID: 0}
     - target: {fileID: 4499570600777579853, guid: 4e5e3da21555e4b4dbefbfeee0c76589,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2730,6 +2735,16 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6254110452305574430, guid: 4e5e3da21555e4b4dbefbfeee0c76589,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.4993973
+      objectReference: {fileID: 0}
+    - target: {fileID: 6254110452305574430, guid: 4e5e3da21555e4b4dbefbfeee0c76589,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5999756
+      objectReference: {fileID: 0}
     - target: {fileID: 6311119839952410091, guid: 4e5e3da21555e4b4dbefbfeee0c76589,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2743,7 +2758,7 @@ PrefabInstance:
     - target: {fileID: 6928297320700826651, guid: 4e5e3da21555e4b4dbefbfeee0c76589,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 70.50165
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 7253667429085627615, guid: 4e5e3da21555e4b4dbefbfeee0c76589,
         type: 3}
@@ -4351,6 +4366,7 @@ MonoBehaviour:
   _factoryPoint: {fileID: 0}
   _confetti: {fileID: 1689178791}
   _producedProducts: []
+  _useAutoProcess: 1
   _usingIngredients: []
   _moneyCollected: 0
 --- !u!224 &1222166688 stripped
@@ -4483,6 +4499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967622102020894602, guid: 34a83f8769b4f8340a5063f1bd4f254e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8258105913259174715, guid: 34a83f8769b4f8340a5063f1bd4f254e,
         type: 3}
@@ -7631,6 +7652,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 236631743193522617, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.9995117
+      objectReference: {fileID: 0}
     - target: {fileID: 236631743277222504, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7919,7 +7945,7 @@ PrefabInstance:
     - target: {fileID: 236631744151005187, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 683.29126
+      value: 391.66937
       objectReference: {fileID: 0}
     - target: {fileID: 236631744151005187, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
@@ -7959,7 +7985,7 @@ PrefabInstance:
     - target: {fileID: 236631744552683950, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -21.000977
+      value: -21.00113
       objectReference: {fileID: 0}
     - target: {fileID: 236631744552683950, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
@@ -7999,7 +8025,7 @@ PrefabInstance:
     - target: {fileID: 236631744841651299, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 683.2912
+      value: 391.66934
       objectReference: {fileID: 0}
     - target: {fileID: 236631744841651299, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
@@ -8437,6 +8463,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6928297320924671455}
     m_Modifications:
+    - target: {fileID: 1202022854945145482, guid: 806c737c22e1e0244a38cf5c875df9b5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.4993973
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202022854945145482, guid: 806c737c22e1e0244a38cf5c875df9b5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5999756
+      objectReference: {fileID: 0}
     - target: {fileID: 4141858879192803919, guid: 806c737c22e1e0244a38cf5c875df9b5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8584,14 +8620,13 @@ PrefabInstance:
     - target: {fileID: 2600525149024114506, guid: ec82ecb665643473a89dd4eeb14597be,
         type: 3}
       propertyPath: _recipes.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2600525149024114506, guid: ec82ecb665643473a89dd4eeb14597be,
         type: 3}
       propertyPath: _recipes.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 232ba74caea19458c8067dfe8dee8a32,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7292153389060989564, guid: ec82ecb665643473a89dd4eeb14597be,
         type: 3}
       propertyPath: m_Size.x

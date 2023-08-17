@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d969ef77044916b4daaa2a058dfbfbdf, type: 3}
-  m_Name: BetterPig
+  m_Name: RawPig
   m_EditorClassIdentifier: 
-  _ingredientModel: {fileID: 0}
-  _ingredientMaterial: {fileID: 0}
-  _price: 100
-  _name: Better Pig
+  ingredientSprite: {fileID: 0}
+  _ingredientRefference: {fileID: 5946232983628598394, guid: 283800122f39144cd8a316a79da0b17f,
+    type: 3}
+  _price: 80
+  _name: Raw Bacon

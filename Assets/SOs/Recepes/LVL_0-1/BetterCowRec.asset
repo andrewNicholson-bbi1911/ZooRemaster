@@ -15,5 +15,4 @@ MonoBehaviour:
   _ingredients:
   - {fileID: 11400000, guid: 6caec69c413ef464d97d1fd3ca0853bc, type: 2}
   - {fileID: 11400000, guid: 6caec69c413ef464d97d1fd3ca0853bc, type: 2}
-  - {fileID: 11400000, guid: 6caec69c413ef464d97d1fd3ca0853bc, type: 2}
   _finalProduct: {fileID: 11400000, guid: d6aea93453f264593b4d85cd736c9ecc, type: 2}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9eaf19a718824334f91cc9585bd2f384, type: 3}
-  m_Name: BetterPigRec
+  m_Name: CookedChickenRec
   m_EditorClassIdentifier: 
   _ingredients:
-  - {fileID: 11400000, guid: 8a1b1c495f3c247dfaeabe356882d6c1, type: 2}
-  - {fileID: 11400000, guid: 8a1b1c495f3c247dfaeabe356882d6c1, type: 2}
-  _finalProduct: {fileID: 11400000, guid: b42be9d284171417397748a1a89f87c4, type: 2}
+  - {fileID: 11400000, guid: d0a7f215ebc764cc6825aec0c40e91b2, type: 2}
+  - {fileID: 11400000, guid: d0a7f215ebc764cc6825aec0c40e91b2, type: 2}
+  _finalProduct: {fileID: 11400000, guid: 088e9b7bd0449400682c6c38e1218c94, type: 2}
