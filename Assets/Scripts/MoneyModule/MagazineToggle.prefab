@@ -32,10 +32,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6810521017196655317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.22984472, y: 0.102000006}
-  m_AnchorMax: {x: 0.7764224, y: 0.887}
-  m_AnchoredPosition: {x: -1, y: 0.5}
-  m_SizeDelta: {x: 0.35299683, y: -1.7669983}
+  m_AnchorMin: {x: 0.13363686, y: 0.102000006}
+  m_AnchorMax: {x: 0.89400005, y: 0.87652916}
+  m_AnchoredPosition: {x: -1, y: 0.5000038}
+  m_SizeDelta: {x: -0.6135998, y: -0.7670002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1717879364605426881
 CanvasRenderer:
@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 4644992398752907576}
   - component: {fileID: 6782807245529319673}
   - component: {fileID: 3721066948707525281}
-  - component: {fileID: 7757223154079863702}
   m_Layer: 0
   m_Name: MagazineToggle
   m_TagString: Untagged
@@ -166,7 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda77e81b0cc5ce46a55a5f07099fd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shopPanel: {fileID: 0}
+  _shopPanel: {fileID: 8788047609944621049, guid: 4e5e3da21555e4b4dbefbfeee0c76589,
+    type: 3}
 --- !u!114 &3721066948707525281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,16 +227,3 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
---- !u!114 &7757223154079863702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8409117767174018498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda77e81b0cc5ce46a55a5f07099fd2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shopPanel: {fileID: 0}

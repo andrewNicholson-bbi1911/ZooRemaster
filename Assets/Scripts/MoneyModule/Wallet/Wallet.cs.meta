@@ -3,7 +3,8 @@ guid: c221faa5a8e90d44194df672ba61fc3d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _walletSO: {fileID: 11400000, guid: ee3bb96fa8a7b0e43be64319ac68c2ea, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

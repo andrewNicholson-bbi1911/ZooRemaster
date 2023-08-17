@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingradientViewers:
   - {fileID: 1057963609349254145}
-  _shop: {fileID: 0}
+  _shop: {fileID: 5633867035318661775, guid: f8cf98f685d63e54cb020ba244213cef, type: 3}
 --- !u!1 &1596891454721287114
 GameObject:
   m_ObjectHideFlags: 0

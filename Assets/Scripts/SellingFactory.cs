@@ -6,10 +6,13 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using RSG;
+using System;
+
 public class SellingFactory : Factory
 {
-
     [SerializeField] private int _moneyCollected = 0;
+
+    public static Action<int> IngredientSelled;
 
     public override bool TryProcessProduct(RecipeSO recipe)
     {
@@ -64,6 +67,6 @@ public class SellingFactory : Factory
     {
         var amount = ingredient.Price;
 
-        _moneyCollected += amount;
+        IngredientSelled?.Invoke(amount);
     }
 }

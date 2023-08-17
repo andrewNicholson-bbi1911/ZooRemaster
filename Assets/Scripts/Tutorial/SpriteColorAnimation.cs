@@ -24,9 +24,8 @@ public class SpriteColorAnimation : MonoBehaviour
 
     private void Update()
     {
-        var lerp = Mathf.Abs(_timer / _cycleTime - 0.5f) * 2;
+        var lerp = Mathf.Abs(_timer / _cycleTime) * 2;
         var color = Color.Lerp(_startColor, _secondColor, lerp);
-        color.a *= _alphaMult;
         _renderer.color = color;
         _timer += Time.deltaTime;
         if (_timer > _cycleTime)
@@ -39,14 +38,14 @@ public class SpriteColorAnimation : MonoBehaviour
     {
         if (_changingAlpha != null)
             StopCoroutine(_changingAlpha);
-        _changingAlpha = StartCoroutine(ChangeAlpha(1));
+        _changingAlpha = StartCoroutine(ChangeAlpha(0));
     }
 
     public void Hide()
     {
         if (_changingAlpha != null)
             StopCoroutine(_changingAlpha);
-        _changingAlpha = StartCoroutine(ChangeAlpha(0));
+        _changingAlpha = StartCoroutine(ChangeAlpha(1));
     }
 
     private IEnumerator ChangeAlpha(float target)
@@ -60,7 +59,4 @@ public class SpriteColorAnimation : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
-
-
-
 }

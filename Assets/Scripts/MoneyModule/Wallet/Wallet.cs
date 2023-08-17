@@ -17,6 +17,17 @@ public class Wallet : MonoBehaviour
         _amount = _walletSO.Amount;
     }
 
+    private void OnEnable()
+    {
+        OnAmountChanged?.Invoke(Amount);
+        SellingFactory.IngredientSelled += AddMoney;
+    }
+
+    private void OnDisable()
+    {
+        SellingFactory.IngredientSelled -= AddMoney;
+    }
+
     public bool TryTakeMoney(int removalCount)
     {
         if(removalCount > _amount)
