@@ -7726,12 +7726,12 @@ PrefabInstance:
     - target: {fileID: 236631744151005187, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 236631744151005187, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 236631744151005187, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
@@ -7746,7 +7746,7 @@ PrefabInstance:
     - target: {fileID: 236631744151005187, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 236631744169539305, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
@@ -7806,12 +7806,12 @@ PrefabInstance:
     - target: {fileID: 236631744841651299, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 236631744841651299, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 236631744841651299, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
@@ -7826,7 +7826,7 @@ PrefabInstance:
     - target: {fileID: 236631744841651299, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -199.45001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 236631744985195007, guid: aa173dd1ba8c4bc4e9e7de080eaa8ca2,
         type: 3}
@@ -8398,6 +8398,23 @@ PrefabInstance:
       propertyPath: _factoryPoint
       value: 
       objectReference: {fileID: 2060180293}
+    - target: {fileID: 2600525149024114506, guid: ec82ecb665643473a89dd4eeb14597be,
+        type: 3}
+      propertyPath: _recipes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600525149024114506, guid: ec82ecb665643473a89dd4eeb14597be,
+        type: 3}
+      propertyPath: _recipes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b7da55927fffd44d782f18ebda0bb109,
+        type: 2}
+    - target: {fileID: 2600525149024114506, guid: ec82ecb665643473a89dd4eeb14597be,
+        type: 3}
+      propertyPath: _usingIngredients.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d0a7f215ebc764cc6825aec0c40e91b2,
+        type: 2}
     - target: {fileID: 8619183855664467684, guid: ec82ecb665643473a89dd4eeb14597be,
         type: 3}
       propertyPath: m_LocalPosition.x
