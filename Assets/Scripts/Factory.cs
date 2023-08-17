@@ -38,11 +38,14 @@ public class Factory : MonoBehaviour
     public event UnityAction<Factory> GotIngredient; // replacing class
     public event UnityAction<List<Ingredient>> ReleasedIngredient; // check replacing logic
     public event UnityAction<Factory> Interacted;  // check replacing logic
+    public event UnityAction<InGameEvent> OnProcessed;
+
 
     // Does these events need for Ingredeint logic?
     protected void DoOnVeryNiceMove() => VeryNiceMove?.Invoke();
     protected void DoOnNiceMove() => NiceMove?.Invoke();
     protected void DoInterracted(Factory factory) => Interacted?.Invoke(factory);
+    protected void DoOnProcessed(InGameEvent inGameEvent) => OnProcessed?.Invoke(inGameEvent);
 
     public event UnityAction NiceMove;
     public event UnityAction VeryNiceMove;
@@ -118,7 +121,7 @@ public class Factory : MonoBehaviour
             {
                 UseIngredinents(usedIngredients);
                 ProduceProduct(recipe.FinalProduct);
-
+                OnProcessed?.Invoke(new InGameEvent(InGameEvenType.Produce, recipe.FinalProduct.Name, 1));
                 return true;
             }
             else  // ?????-?? ?????????? ?? ?????

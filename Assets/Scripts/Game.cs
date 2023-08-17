@@ -10,6 +10,7 @@ using Lean.Localization;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private EndGameConditionsController _conditions;
     [SerializeField] private Net _net;
     [SerializeField] private TapMark[] _masks;
     [SerializeField] private ComboText _combo;
@@ -28,7 +29,7 @@ public class Game : MonoBehaviour
 
     private Factory _lastAviary;
     private int _level;
-    private const int _levelsPerScene = 4;
+    private const int _levelsPerScene = 5;
     private bool _levelComplete;
 
     public event UnityAction<int, LevelType> LevelStarted;
@@ -63,8 +64,9 @@ public class Game : MonoBehaviour
     {
         _net.Selected += OnSelectedAnimals;
         _net.Deselected += OnDeselectedAnimals;
-        _net.AnimalsChanged += OnAnimalsChanged;
+        _net.AnimalsChanged += OnIngredientsChanged;
         _combo.WillDisappear += DoneCombo;
+        _conditions.OnConditionComplited += ExtraFinishGame;
         foreach (var item in _aviaries)
         {
             item.GotIngredient += OnGotAnimal;
@@ -75,8 +77,10 @@ public class Game : MonoBehaviour
     {
         _net.Selected -= OnSelectedAnimals;
         _net.Deselected -= OnDeselectedAnimals;
-        _net.AnimalsChanged -= OnAnimalsChanged;
+        _net.AnimalsChanged -= OnIngredientsChanged;
         _combo.WillDisappear -= DoneCombo;
+        _conditions.OnConditionComplited -= ExtraFinishGame;
+
         foreach (var item in _aviaries)
         {
             item.GotIngredient -= OnGotAnimal;
@@ -113,7 +117,7 @@ public class Game : MonoBehaviour
         {
             { "Level number",  _level},
         };
-
+        _conditions.LoadCondition(_level);
         eventParameters.Clear();
     }
 
@@ -171,7 +175,7 @@ public class Game : MonoBehaviour
         }
     }
 
-    private void OnAnimalsChanged(int count)
+    private void OnIngredientsChanged(int count)
     {
         if (count == 0)
         {
@@ -179,6 +183,11 @@ public class Game : MonoBehaviour
             _levelComplete = true;
             LevelCompleted?.Invoke();
         }
+    }
+
+    private void ExtraFinishGame()
+    {
+        OnIngredientsChanged(0);
     }
 
     private IEnumerator FinishGame()
