@@ -63,7 +63,8 @@ public class SellingFactory : Factory
     private void Sell(Ingredient ingredient)
     {
         var amount = ingredient.Price;
-
+        DoOnProcessed(new InGameEvent(InGameEvenType.Sell, ingredient.Name, 1));
+        DoOnProcessed(new InGameEvent(InGameEvenType.EarnMoney, ingredient.Name, amount));
         _moneyCollected += amount;
     }
 }
