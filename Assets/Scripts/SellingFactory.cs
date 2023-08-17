@@ -10,13 +10,12 @@ using System;
 
 public class SellingFactory : Factory
 {
-    [SerializeField] private int _moneyCollected = 0;
-
     public static Action<int> IngredientSelled;
+    [SerializeField] private int _moneyCollected = 0;
 
     public override bool TryProcessProduct(RecipeSO recipe)
     {
-        foreach(var ingredient in _ingredientsContained)
+        foreach (var ingredient in _ingredientsContained)
         {
             Sell(ingredient);
         }
@@ -66,6 +65,9 @@ public class SellingFactory : Factory
     private void Sell(Ingredient ingredient)
     {
         var amount = ingredient.Price;
+        DoOnProcessed(new InGameEvent(InGameEvenType.Sell, ingredient.Name, 1));
+        DoOnProcessed(new InGameEvent(InGameEvenType.EarnMoney, ingredient.Name, amount));
+        //_moneyCollected += amount;
 
         IngredientSelled?.Invoke(amount);
     }
