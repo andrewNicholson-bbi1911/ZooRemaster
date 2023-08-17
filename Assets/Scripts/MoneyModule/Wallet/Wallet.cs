@@ -17,14 +17,25 @@ public class Wallet : MonoBehaviour
         _amount = _walletSO.Amount;
     }
 
+    private void OnEnable()
+    {
+        OnAmountChanged?.Invoke(Amount);
+        SellingFactory.IngredientSelled += AddMoney;
+    }
+
+    private void OnDisable()
+    {
+        SellingFactory.IngredientSelled -= AddMoney;
+    }
+
     public bool TryTakeMoney(int removalCount)
     {
-        if(removalCount > _amount)
+        if (removalCount > _amount)
         {
             Debug.LogWarning($" оличество денег в кошельке: {_amount} меньше чем требует списать {removalCount}");
             return false;
         }
-        else if(removalCount <= 0)
+        if (removalCount <= 0)
         {
             Debug.LogWarning($"Ќевозможно списать {removalCount} с кошелька");
             return false;

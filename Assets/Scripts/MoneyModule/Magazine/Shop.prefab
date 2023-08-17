@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb6e014aa959104d9322a163b4da209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wallet: {fileID: 0}
+  _wallet: {fileID: 4778673154167613318, guid: 8700da185acc5ea42954278d5a23607c, type: 3}
