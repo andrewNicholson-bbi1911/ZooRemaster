@@ -14,6 +14,7 @@ public class Factory : MonoBehaviour
     [SerializeField] private ComboText _comboText;
     [SerializeField] private Image _comboImage;
     [SerializeField] private List<RecipeSO> _recipes;
+    [SerializeField] private FactoryPoint _factoryPoint; 
 
     [SerializeField] private ParticleSystem _confetti;
 
@@ -59,6 +60,7 @@ public class Factory : MonoBehaviour
     {
         _producingProducts = new List<IngredientSO>();
         _usingIngredients = new List<IngredientSO>();
+
         foreach(var recepe in _recipes)
         {
             _producingProducts.Add(recepe.FinalProduct);
@@ -72,6 +74,8 @@ public class Factory : MonoBehaviour
         NiceMove += OnNiceMove;
         VeryNiceMove += OnNiceMove;
         BadMove += OnBadMove;
+
+        _factoryPoint.gameObject.SetActive(false);
     }
 
     private void OnDisable()
@@ -79,6 +83,8 @@ public class Factory : MonoBehaviour
         NiceMove -= OnNiceMove;
         VeryNiceMove -= OnNiceMove;
         BadMove -= OnBadMove;
+
+        _factoryPoint.gameObject.SetActive(true);
     }
 
     private void OnNiceMove()
