@@ -19,6 +19,8 @@ public class Factory : MonoBehaviour
     [SerializeField] private ParticleSystem _confetti;
 
     [SerializeField] private List<IngredientSO> _producedProducts = new List<IngredientSO>();
+    [Space]
+    [SerializeField] private bool _useAutoProcess = true;
 
 
     protected List<Ingredient> _ingredientsContained = new List<Ingredient>();
@@ -193,6 +195,8 @@ public class Factory : MonoBehaviour
         //bool sameAnimals = _ingredients.Count == 0 || newIngredients[0].ID == _ingredients[_ingredients.Count - 1].ID;
         StartCoroutine(AddAnimalsLoop(newIngredients, canUse && inOtherFactory == false));
 
+
+
         return canUse;
     }
 
@@ -261,6 +265,14 @@ public class Factory : MonoBehaviour
                     VeryNiceMove?.Invoke();
                 else if (newAnimals.Count >= 1)
                     NiceMove?.Invoke();
+
+                if (_useAutoProcess)
+                {
+                    foreach(var recepe in _recipes)
+                    {
+                        TryProcessProduct(recepe);
+                    }
+                }
             }
             else
             {
@@ -286,6 +298,15 @@ public class Factory : MonoBehaviour
                     VeryNiceMove?.Invoke();
                 else if (newAnimals.Count >= 1)
                     NiceMove?.Invoke();
+
+                if (_useAutoProcess)
+                {
+                    foreach (var recepe in _recipes)
+                    {
+                        TryProcessProduct(recepe);
+                    }
+                }
+
             }
             else
             {
@@ -361,6 +382,7 @@ public class Factory : MonoBehaviour
 
     private void ProduceProduct(IngredientSO product)
     {
-        _producedProducts.Add(product);
+        //_producedProducts.Add(product);
+        FindObjectOfType<IngredientSpawner>().SpawnIngredient(product);
     }
 }
