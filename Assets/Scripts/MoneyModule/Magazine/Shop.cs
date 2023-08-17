@@ -7,6 +7,7 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private Wallet _wallet;
     [SerializeField] private FactoryEnable _factoryEnable;
+    [SerializeField] private IngredientSpawner _spawner;
 
     public void BuyFabric(int fabricPrice)
     {
@@ -23,6 +24,16 @@ public class Shop : MonoBehaviour
     public void SellIngredient(IngredientSO ingredient)
     {
         _wallet.AddMoney(ingredient.Price);
+    }
+
+    public void BuyAnimal(int animalPrice)
+    {
+        if (_wallet.TryTakeMoney(animalPrice) == false)
+            return;
+
+        _spawner.TestSpawn();
+
+        Debug.Log($"Животное куплен!");
     }
 
     public void BuyIngradient(IngredientSO ingredient)

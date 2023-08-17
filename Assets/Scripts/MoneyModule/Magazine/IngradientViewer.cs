@@ -9,6 +9,8 @@ public class IngradientViewer : MonoBehaviour
 {
     [SerializeField] private IngredientSO _ingredientSO;
 
+    [SerializeField] private Shop _shop;
+
     [SerializeField] private Button _buyButton;
     [SerializeField] private Button _sellButton;
     [SerializeField] private TMP_Text _nameLabel;
@@ -18,19 +20,26 @@ public class IngradientViewer : MonoBehaviour
 
     private void Start()
     {
-        _nameLabel.text = $"{_ingredientSO.Name}: {_ingredientSO.Price}$";
+        _nameLabel.text = $"Buy Animal: 25$";
     }
 
     private void OnEnable()
     {
-        _buyButton.onClick.AddListener(RaiseBuyButtonClicked);
-        _sellButton.onClick.AddListener(RaiseSellButtonClicked);
+        _buyButton.onClick.AddListener(RaiseAnimalBuyButtonClicked);
+
+        //_buyButton.onClick.AddListener(RaiseBuyButtonClicked);
+        //_sellButton.onClick.AddListener(RaiseSellButtonClicked);
     }
 
     private void OnDisable()
     {
-        _buyButton.onClick.RemoveListener(RaiseBuyButtonClicked);
-        _sellButton.onClick.RemoveListener(RaiseSellButtonClicked);
+        //_buyButton.onClick.RemoveListener(RaiseBuyButtonClicked);
+        //_sellButton.onClick.RemoveListener(RaiseSellButtonClicked);
+    }
+
+    private void RaiseAnimalBuyButtonClicked()
+    {
+        _shop.BuyAnimal(25);
     }
 
     private void RaiseBuyButtonClicked()
