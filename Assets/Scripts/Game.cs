@@ -26,6 +26,7 @@ public class Game : MonoBehaviour
     [SerializeField] private List<LevelType> _levelTypes;
     [SerializeField] private Leaderboard _totalScoreLeaderboard;
     [SerializeField] private LeanToken _levelToken;
+    [SerializeField] private IngredientSpawner _ingredientSpawner;
 
     private Factory _lastAviary;
     private int _level;
@@ -179,15 +180,27 @@ public class Game : MonoBehaviour
     {
         if (count == 0)
         {
-            StartCoroutine(FinishGame());
-            _levelComplete = true;
-            LevelCompleted?.Invoke();
+            StartCoroutine(SpawningIngradients());
+
+            //StartCoroutine(FinishGame());
+            //_levelComplete = true;
+            //LevelCompleted?.Invoke();
         }
     }
 
     private void ExtraFinishGame()
     {
         OnIngredientsChanged(0);
+    }
+
+    private IEnumerator SpawningIngradients()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            _ingredientSpawner.TestSpawn();
+        }
+
+        return null;
     }
 
     private IEnumerator FinishGame()
