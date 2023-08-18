@@ -10,14 +10,14 @@ public class FabricShopViewer : MonoBehaviour
     [SerializeField] private Button _buyButton;
     [SerializeField] private TMP_Text _nameLabel;
 
-    private int _fabricPrice = 100;
+    [SerializeField] private int _fabricPrice = 100;
 
     public event Action<int> OnBuyButtonClicked;
     //public event Action<> OnSellButtonClicked;
 
     private void Start()
     {
-        _nameLabel.text = $"Fabric: {_fabricPrice}";
+        //_nameLabel.text = $"Fabric: {_fabricPrice}";
     }
 
     private void OnEnable()

@@ -15,7 +15,8 @@ public class EndGameConditionsController : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI _actionText;
     [SerializeField] private TextMeshProUGUI _amountRemainingText;
-    [SerializeField] private Image _image;
+    [SerializeField] private TextMeshProUGUI _ingredientNameText;
+    //[SerializeField] private Image _image;
     [Space]
     [Header("Other")]
     //[SerializeField] private L
@@ -60,9 +61,9 @@ public class EndGameConditionsController : MonoBehaviour
 
     private void UpdateConditionData()
     {
-        _image.sprite = _actualCondition.IngredientSprite;
+        //_image.sprite = _actualCondition.IngredientSprite;
         _actionText.text = GetActionText();
-
+        _ingredientNameText.text = _actualCondition.Name;
         _amountRemainingText.text = _actualCondition.AmountRemaining.ToString();
     }
 
@@ -98,8 +99,9 @@ public class EndGameConditionsController : MonoBehaviour
 public struct EndGameCondition
 {
     public InGameEvenType Action { get => _whatToTrack; }
-    public Sprite IngredientSprite { get => _whatIngredient.ingredientSprite; }
+    //public Sprite IngredientSprite { get => _whatIngredient.ingredientSprite; }
     public int AmountRemaining { get => _howMuchRequered; }
+    public string Name { get => _whatIngredient.Name; }
 
     [SerializeField] private InGameEvenType _whatToTrack;
     [SerializeField] private IngredientSO _whatIngredient;
