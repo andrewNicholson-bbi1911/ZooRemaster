@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d969ef77044916b4daaa2a058dfbfbdf, type: 3}
-  m_Name: BetterChicken
+  m_Name: CookedCow
   m_EditorClassIdentifier: 
-  _ingredientModel: {fileID: 0}
-  _ingredientMaterial: {fileID: 0}
-  _price: 100
-  _name: Better Chicken
+  ingredientSprite: {fileID: 0}
+  _ingredientRefference: {fileID: 7147664891461072272, guid: eacc15b0c76b544b69b3fa5d46857a03,
+    type: 3}
+  _price: 500
+  _name: Fried Steak

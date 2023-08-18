@@ -31,7 +31,10 @@ public class Shop : MonoBehaviour
         if (_wallet.TryTakeMoney(animalPrice) == false)
             return;
 
-        _spawner.TestSpawn();
+        for (int i = 0; i < 5; i++)
+        {
+            _spawner.TestSpawn();
+        }
 
         Debug.Log($"Животное куплен!");
     }
