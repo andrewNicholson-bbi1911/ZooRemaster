@@ -266,12 +266,16 @@ public class Factory : MonoBehaviour
                 else if (newAnimals.Count >= 1)
                     NiceMove?.Invoke();
 
-                if (_useAutoProcess)
+                
+                while (_useAutoProcess && true)
                 {
-                    foreach(var recepe in _recipes)
+                    var res = false;
+                    foreach (var recepe in _recipes)
                     {
-                        TryProcessProduct(recepe);
+                        res = res || TryProcessProduct(recepe);
                     }
+                    if (!res)
+                        break;
                 }
             }
             else
@@ -299,12 +303,15 @@ public class Factory : MonoBehaviour
                 else if (newAnimals.Count >= 1)
                     NiceMove?.Invoke();
 
-                if (_useAutoProcess)
+                while (_useAutoProcess && true)
                 {
+                    var res = false;
                     foreach (var recepe in _recipes)
                     {
-                        TryProcessProduct(recepe);
+                        res = res || TryProcessProduct(recepe);
                     }
+                    if (!res)
+                        break;
                 }
 
             }
